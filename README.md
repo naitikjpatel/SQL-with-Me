@@ -3,4 +3,4 @@
 
 #content
 
-<a href="documentation/basic.md"/>go to basic
+<a href="documentation/basics.md"/>go to basic
