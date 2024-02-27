@@ -3,4 +3,4 @@
 
 #content
 
-<a href="Day-1-SQL/README.md"/>Day-1-SQL
+<a href="Day-1-SQL"/>Day-1-SQL
