@@ -3,4 +3,4 @@
 
 #content
 
-<a href="documentation/basics.md"/>go to basic
+<a href="Day-1-SQL/README.md"/>Day-1-SQL
