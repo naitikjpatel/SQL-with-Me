@@ -4,3 +4,5 @@
 #content
 
 <a href="Day-1-SQL"/>Day-1-SQL
+
+<a href="Day-2-SQL"/>Day-2-SQL
