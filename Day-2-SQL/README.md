@@ -1,3 +1,4 @@
+## Explore SQL
 I'd be glad to provide a comprehensive response that merges the strengths of Response A and Response B, addresses their shortcomings, and adheres to the prompt's constraints:
 
 **# SQL Foundations: Delving Deeper into Operators, NULL Handling, and Order**
@@ -112,7 +113,7 @@ Remember that operator precedence, `NULL` handling, `DISTINCT`, `UNIQUE`, and `O
 **1 Explore Scripts:** Open and explore individual SQL scripts based on the topic of interest.
 **2 Learn and Contribute:** Feel free to contribute, provide feedback, or extend the examples to enhance understanding.
 
-###Explore the SQL: [Click Here](https://github.com/naitikjpatel/SQL-with-Me/edit/main/Day-2-SQL/CH1-2.SQL) 
+### Explore the SQL: [Click Here](https://github.com/naitikjpatel/SQL-with-Me/edit/main/Day-2-SQL/CH1-2.SQL) 
 
-###Author
+### Author
 `[Naitik J Patel]`
