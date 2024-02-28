@@ -113,7 +113,6 @@ Remember that operator precedence, `NULL` handling, `DISTINCT`, `UNIQUE`, and `O
 **1 Explore Scripts:** Open and explore individual SQL scripts based on the topic of interest.
 **2 Learn and Contribute:** Feel free to contribute, provide feedback, or extend the examples to enhance understanding.
 
-### Explore the SQL: [Click Here](https://github.com/naitikjpatel/SQL-with-Me/edit/main/Day-2-SQL/CH1-2.SQL) 
 
 ### Author
 `[Naitik J Patel]`
