@@ -1,17 +1,18 @@
+## Multi-Row Comparison in SQL using ANY, SOME, ALL, IN, and NOT IN
 
-## Multi-Row Comparison in SQL using ANY, SOME, and ALL
-
-This comprehensive guide explores how to compare a single value with multiple values from a subquery in SQL. It delves into the functionalities of the `ANY`, `SOME`, and `ALL` operators, empowering you to write more robust and expressive SQL queries.
+This guide explores advanced techniques for comparing a single value with multiple values from subqueries in SQL. It delves into the functionalities of `ANY`, `SOME`, `ALL`, `IN`, and `NOT IN`, empowering you to write refined and expressive queries.
 
 ### Understanding the Operators
 
-* **ANY**: Acts like a logical OR operator within the subquery. It returns `TRUE` if **at least one** value in the subquery satisfies the comparison condition.
-
-* **SOME**: Synonyms with `ANY` in most databases. While it offers a slightly different reading, it functionally achieves the same outcome.
-
-* **ALL**: Represents a logical AND operator within the subquery. It returns `TRUE` only if **all** the values in the subquery fulfill the comparison condition.
+* **ANY**: Checks if **at least one** value in the subquery satisfies the comparison condition (similar to logical OR).
+* **SOME**: Synonymous with `ANY` in most databases.
+* **ALL**: Ensures **all** values in the subquery fulfill the comparison condition (like logical AND).
+* **IN**: Compares a value against a list of values, returning `TRUE` if it matches any in the list.
+* **NOT IN**: Opposite of `IN`, returning `TRUE` if the value doesn't match any in the list.
 
 ### Syntax
+
+**Using ANY, SOME, and ALL:**
 
 ```sql
 SELECT column_name(s)
@@ -21,11 +22,24 @@ WHERE column_name(s) operator (SELECT column_name FROM table_name WHERE conditio
 -- Replace operator with =, <>, !=, >, >=, <, or <=
 ```
 
-**Note:** This syntax applies to both `ANY` and `ALL`. The aliasing of the table name with `AS s` is optional but can improve readability in complex queries.
+**Using IN and NOT IN:**
+
+```sql
+SELECT column_name(s)
+FROM table_name AS s
+WHERE column_name(s) operator (list of values);
+
+-- Replace operator with =, <>, !=, >, >=, <, or <=
+```
+
+**Note:** Aliasing the table name with `AS s` is optional but improves readability in complex queries.
 
 ### Example
 
-**Scenario:** Imagine a `Students` table containing details like `student_id`, `name`, and `course_id`. We're looking to identify students enrolled in **any** of the courses with IDs `1`, `2`, and `3`.
+**Scenario:** We have a `Students` table with `student_id`, `name`, and `course_id`. We want to find students:
+
+1. Enrolled in **any** of the courses with IDs `1`, `2`, and `3`.
+2. **Not** enrolled in any of the courses with IDs `4` and `5`.
 
 **Table: Students**
 
@@ -35,7 +49,9 @@ WHERE column_name(s) operator (SELECT column_name FROM table_name WHERE conditio
 | 2          | Jane Smith     | 4         |
 | 3          | Alice Miller   | 2         |
 
-**SQL Query:**
+**SQL Queries:**
+
+**1. Using ANY:**
 
 ```sql
 SELECT *
@@ -43,24 +59,28 @@ FROM Students AS s
 WHERE course_id ANY (SELECT course_id FROM Courses WHERE course_id IN (1, 2, 3));
 ```
 
-**Explanation:**
+**2. Using NOT IN:**
 
-1. The subquery retrieves all `course_id` values from the `Courses` table where `course_id` is included in the list (1, 2, 3).
-2. The `ANY` operator efficiently checks if the `course_id` of each student in the `Students` table (aliased as `s` for clarity) matches **any** of the values returned by the subquery.
-3. The query selects all student records where this matching condition is met.
+```sql
+SELECT *
+FROM Students AS s
+WHERE course_id NOT IN (4, 5);
+```
 
-**Result:**
+**Results:**
 
-| student_id | name          | course_id |
-|-----------|---------------|-----------|
-| 1          | John Doe       | 1         |
-| 3          | Alice Miller   | 2         |
-
-This example effectively demonstrates how to leverage `ANY` to determine if a value satisfies **any** condition within a subquery. You can substitute `ALL` to check if the value meets **all** conditions specified in the subquery.
+| student_id | name          | course_id | (Query 1) | (Query 2) |
+|-----------|---------------|-----------|-----------|-----------|
+| 1          | John Doe       | 1         | TRUE       | TRUE       |
+| 2          | Jane Smith     | 4         | FALSE      | TRUE       |
+| 3          | Alice Miller   | 2         | TRUE       | TRUE       |
 
 ### Key Points
 
-* `ANY` and `ALL` offer powerful mechanisms for comparing a single value with multiple values from subqueries in SQL.
-* `ANY` is suitable for scenarios where you only need to confirm if **one or more** values meet the criteria.
-* Conversely, use `ALL` when you require **all** values to satisfy the condition within the subquery.
-* These operators enhance the flexibility and expressiveness of SQL queries, enabling you to write more concise and readable code.
+* `ANY`, `SOME`, and `ALL` allow comparisons with multiple values from subqueries, while `IN` and `NOT IN` operate directly on lists.
+* Choose `ANY` or `SOME` when **one or more** values in the subquery need to match the condition.
+* Use `ALL` when **all** values in the subquery must fulfill the condition.
+* Employ `IN` to check if a value exists in a specific list, and `NOT IN` for the opposite.
+* These operators provide versatile tools for crafting efficient and informative SQL queries.
+
+This guide empowers you to leverage these operators effectively in your SQL endeavors!
