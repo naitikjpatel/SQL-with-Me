@@ -17,3 +17,5 @@
 <a href="Day-6-SQL"/>Day-6-SQL
 
 <a href="Day-7-SQL"/>Day-7-SQL
+
+<a href="Day-8-SQL"/>Day-8-SQL
